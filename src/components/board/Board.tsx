@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import Row from "./Row";
+import Row from "./row";
 
 function Board() {
   const wordOfTheDay = "word";

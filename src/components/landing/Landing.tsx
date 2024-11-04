@@ -1,10 +1,9 @@
-import { useState } from "react";
-import AnimatedWords from "./AnimatedWords";
+import AnimatedWords from "./animated-words";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 export default function LandingPage() {
-  const [hasSession, setHasSession] = useState(false);
-
+  const { t } = useTranslation();
   return (
     <div className="min-h-screen bg-gray-100">
       {/* Hero Section */}
@@ -16,7 +15,7 @@ export default function LandingPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            Welcome to
+            {t("landing.hero.welcome")}
           </motion.h1>
           <AnimatedWords />
           <motion.p
@@ -25,37 +24,35 @@ export default function LandingPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            Challenge your vocabulary and deduction skills!
+            {t("landing.hero.subtitle")}
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
           >
-            {hasSession ? (
+            {false ? (
               <a
                 href="/game"
                 className="bg-white text-blue-600 py-2 px-6 rounded-full text-lg font-semibold hover:bg-gray-100 transition duration-300"
               >
-                Play Now
+                {t("landing.buttons.playNow")}
               </a>
             ) : (
               <div className="space-x-4">
                 <motion.button
-                  onClick={() => setHasSession(true)}
                   className="bg-white text-blue-600 py-2 px-6 rounded-full text-lg font-semibold hover:bg-gray-100 transition duration-300"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  Login
+                  {t("landing.buttons.login")}
                 </motion.button>
                 <motion.button
-                  onClick={() => setHasSession(true)}
                   className="bg-transparent border-2 border-white text-white py-2 px-6 rounded-full text-lg font-semibold hover:bg-white hover:text-blue-600 transition duration-300"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  Register
+                  {t("landing.buttons.register")}
                 </motion.button>
               </div>
             )}
@@ -97,15 +94,13 @@ export default function LandingPage() {
       <section className="py-16">
         <div className="container mx-auto px-6">
           <h2 className="text-3xl font-bold mb-8 text-center">
-            About This Project
+            {t("landing.about.title")}
           </h2>
           <div className="max-w-3xl mx-auto">
-            <p className="text-lg mb-6">
-              This Wordle Clone is a web-based word guessing game inspired by
-              the popular Wordle game. Players have six attempts to guess a
-              five-letter word, with color-coded feedback for each guess.
-            </p>
-            <h3 className="text-xl font-semibold mb-4">Tech Stack:</h3>
+            <p className="text-lg mb-6">{t("landing.about.description")}</p>
+            <h3 className="text-xl font-semibold mb-4">
+              {t("landing.about.techStack.title")}
+            </h3>
             <ul className="list-disc list-inside mb-6">
               <li>React (UI library)</li>
               <li>Tailwind CSS (Styling)</li>
@@ -113,9 +108,7 @@ export default function LandingPage() {
               <li>Framer Motion (Animations)</li>
             </ul>
             <p className="text-lg mb-6">
-              This project showcases modern web development techniques,
-              including responsive design, state management, and smooth
-              animations to enhance user experience.
+              {t("landing.about.projectDescription")}
             </p>
             <div className="text-center">
               <Link
@@ -124,7 +117,7 @@ export default function LandingPage() {
                 rel="noopener noreferrer"
                 className="text-blue-600 hover:text-blue-800 font-semibold"
               >
-                View My Portfolio
+                {t("landing.about.portfolio")}
               </Link>
             </div>
           </div>
@@ -134,7 +127,7 @@ export default function LandingPage() {
       {/* Footer */}
       <footer className="bg-gray-200 py-4">
         <div className="container mx-auto px-6 text-center text-gray-600">
-          <p>&copy; 2023 Wordle Clone. All rights reserved.</p>
+          <p>{t("landing.footer")}</p>
         </div>
       </footer>
     </div>

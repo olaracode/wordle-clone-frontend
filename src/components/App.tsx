@@ -1,6 +1,6 @@
-import Board from "./board/Board";
+import Board from "./board/board";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import LandingPage from "./landing/Landing";
+import LandingPage from "./landing/landing";
 function App() {
   return (
     <BrowserRouter>
