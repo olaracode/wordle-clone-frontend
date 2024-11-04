@@ -22,10 +22,10 @@ const stateClasses = {
   absent: "border-gray-500 text-white",
 };
 const bgClasses = {
-  normal: "#fafafa",
-  correct: "rgb(34 197 94)",
-  present: "rgb(234 179 8)",
-  absent: "rgb(107 114 128)",
+  normal: { bg: "#fafafa", border: "rgb(209 213 219)" },
+  correct: { bg: "rgb(34 197 94)", border: "rgb(34 197 94)" },
+  present: { bg: "rgb(234 179 8)", border: "rgb(234 179 8)" },
+  absent: { bg: "rgb(107 114 128)", border: "rgb(107 114 128)" },
 };
 
 type state = keyof typeof stateClasses;
@@ -58,15 +58,17 @@ const Tile: React.FC<TileProps> = ({
     <motion.input
       id={`${position}-${index}`}
       name={`letter-${index}`}
-      className={`${baseClasses} ${stateClasses[state]}`}
+      className={`${baseClasses} `}
       initial={{ rotateX: 0 }}
       animate={{
         rotateX: isFinished ? [0, 90, 0] : 0,
         scale: isFinished ? [1, 1.1, 1] : 1,
-        backgroundColor: isFinished ? bgClasses[state] : "white",
+        backgroundColor: isFinished ? bgClasses[state].bg : "white",
+        borderColor: isFinished ? bgClasses[state].border : "rgba(0,0,0,0.2)",
       }}
       transition={{
         duration: 0.5,
+        delay: 0.1 * index,
         ease: "easeInOut",
         times: [0, 0.5, 1],
         backgroundColor: { delay: 0.25, duration: 0.01 },
