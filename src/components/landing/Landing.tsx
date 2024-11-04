@@ -1,5 +1,6 @@
 import { useState } from "react";
 import AnimatedWords from "./AnimatedWords";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 export default function LandingPage() {
   const [hasSession, setHasSession] = useState(false);
@@ -106,7 +107,6 @@ export default function LandingPage() {
             </p>
             <h3 className="text-xl font-semibold mb-4">Tech Stack:</h3>
             <ul className="list-disc list-inside mb-6">
-              <li>Next.js (React framework)</li>
               <li>React (UI library)</li>
               <li>Tailwind CSS (Styling)</li>
               <li>TypeScript (Type-safe JavaScript)</li>
@@ -118,14 +118,14 @@ export default function LandingPage() {
               animations to enhance user experience.
             </p>
             <div className="text-center">
-              <a
-                href="https://your-portfolio-url.com"
+              <Link
+                to="https://octavio-lara.vercel.app"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-blue-600 hover:text-blue-800 font-semibold"
               >
                 View My Portfolio
-              </a>
+              </Link>
             </div>
           </div>
         </div>
